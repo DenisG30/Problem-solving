@@ -47,10 +47,10 @@ public class Level1 {
                 
                 
             if(x1 == x2 || y1 == y2) {
-                double coordinatePoint = Math.sqrt(Math.pow((x1 - x2) + (y1 - y2), 2));
+                double coordinatePoint = Math.sqrt(Math.pow((x2 - x1), 2)) + Math.sqrt(Math.pow((y2 - y1), 2));
                 endLength += coordinatePoint;
             } else { 
-                double coordinatePoint = (Math.sqrt(Math.pow((x1 - x2) + (y1 - y2), 2)) / 2) * Math.sqrt(1*1 + 1*1);
+                double coordinatePoint = (((Math.sqrt(Math.pow((x2 - x1), 2))) + (Math.sqrt(Math.pow((y2 - y1), 2)))) / 2) * Math.sqrt(1*1 + 1*1);
                 endLength += coordinatePoint;
             }
                 
