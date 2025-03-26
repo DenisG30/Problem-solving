@@ -9,7 +9,7 @@ public class Level1 {
                 nStr += words[i];
                 itemCount -= words[i].length();
                 if(i + 1 < words.length) {
-                    if(words[i + 1].length() <= itemCount) {
+                    if(words[i + 1].length() <= itemCount - 1) {
                         nStr += " ";
                         itemCount -= 1;
                     } else {
@@ -21,6 +21,8 @@ public class Level1 {
                 int iteration = 0;
                 if(words[i].length() % len != 0 ){
                     iteration = words[i].length() / len + 1;
+                } else {
+                    iteration = words[i].length() / len;
                 }
                 int countTransfer = 1;
                 int nItemCount = 0;
@@ -71,7 +73,7 @@ public class Level1 {
                 continue;
             }     
             
-            for (int p = 0; p < wordLength - subsLength; p++) {
+            for (int p = 0; p < wordLength; p++) {
                 int j;
                 for (j = 0; j < subsLength; j++) {
                     if (words[i].charAt(p + j) != subs.charAt(j)) {
