@@ -1,4 +1,4 @@
-ppublic class Level1 {
+public class Level1 {
     public static int [] WordSearch(int len, String s, String subs) {
         String [] words = s.split("\s+");
         String nStr = "";
