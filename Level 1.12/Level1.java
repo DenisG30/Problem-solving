@@ -7,12 +7,13 @@ public class Level1 {
         double vinnerOne = 0;
         boolean vinOne = false;
         boolean vinTwo = false;
-        
+        int k = 0;
 
         for(int i = 0; i < N; i++) {
             double value = votes[i];
             if(value > vinnerOne) {
                 vinnerOne = value;
+                k = i + 1;
                 vinOne = true;
                 vinTwo = false;
             } else if (value == vinnerOne) {
@@ -21,9 +22,9 @@ public class Level1 {
         }
 
         if(!vinTwo && vinnerOne > sum / 2) {
-            return "majority winner K";
+            return "majority winner " + k ;
         } else if(!vinTwo && vinnerOne <= sum / 2) {
-            return "minority winner K";
+            return "minority winner " + k;
         } else if(vinOne && vinTwo) {
             return "no winner";
         }
