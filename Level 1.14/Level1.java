@@ -3,6 +3,10 @@ public class Level1 {
         int timesUp = 0 ;
         int locationCar = 0; 
 
+        if(L < track[0][0]) {
+            return L; 
+        }
+        
         for (int i = 0; i < N; i++) {
             locationCar = track[i][0];
             if(i != 0) {
