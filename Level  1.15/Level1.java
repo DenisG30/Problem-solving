@@ -5,6 +5,10 @@ public class Level1 {
             return false;
         }
 
+        if(H2 < 0 || W2 < 0) {
+            return false;
+        }
+
         char[][] map1 = new char[H1][W1];
         char[][] map2 = new char[H2][W2];
 
