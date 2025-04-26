@@ -81,7 +81,7 @@ public class Level1 {
         return String.valueOf(nStr.charAt(id));
     }
 
-private static String undo() {
+    private static String undo() {
         if (undoId < 0) return nStr; 
         String lastOperation = undoArr[undoId--];
         if (lastOperation.startsWith("-")) { 
