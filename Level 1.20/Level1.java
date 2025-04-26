@@ -34,10 +34,8 @@ public class Level1 {
 
     private static String add(String[] commandArr) {
         if (commandArr.length < 2) return nStr;
-
         String toAdd = commandArr[1];
         nStr += toAdd; 
-
         if (undoId < undoArr.length - 1) {
             undoArr[++undoId] = "-" + toAdd; 
         }
@@ -54,7 +52,6 @@ public class Level1 {
         } catch (NumberFormatException e) {
             return nStr;
         }
-
         String deleted = "";
         if (num > nStr.length()) {
             deleted = nStr; 
@@ -63,7 +60,6 @@ public class Level1 {
             deleted = nStr.substring(nStr.length() - num); 
             nStr = nStr.substring(0, nStr.length() - num); 
         }
-
         if (undoId < undoArr.length - 1) {
             undoArr[++undoId] = deleted; 
         }
@@ -73,33 +69,26 @@ public class Level1 {
 
     private static String getChar(String[] commandArr) {
         if (commandArr.length < 2) return "";
-
         int id;
         try {
             id = Integer.parseInt(commandArr[1]);
         } catch (NumberFormatException e) {
             return "";
         }
-
         if (id < 0 || id >= nStr.length()) {
             return "";
         }
-
         return String.valueOf(nStr.charAt(id));
     }
 
-    private static String undo() {
+private static String undo() {
         if (undoId < 0) return nStr; 
-
         String lastOperation = undoArr[undoId--];
-
         if (lastOperation.startsWith("-")) { 
             nStr = nStr.substring(0, nStr.length() + lastOperation.length() - 1); 
         } else { 
             nStr += lastOperation; 
         }
-
-        // Добавляем в Redo стек
         if (redoId < redoArr.length - 1) {
             redoArr[++redoId] = lastOperation;
         }
@@ -108,21 +97,20 @@ public class Level1 {
 
     private static String redo() {
         if (redoId < 0) return nStr; 
-
         String lastRedoOperation = redoArr[redoId--];
-        
         if (lastRedoOperation.startsWith("-")) { 
             nStr += lastRedoOperation.substring(1);
         } else { 
             int lengthToDelete = lastRedoOperation.length();
-            nStr = nStr.substring(0, nStr.length() - lengthToDelete); 
+            if (lengthToDelete <= nStr.length()) {
+                nStr = nStr.substring(0, nStr.length() - lengthToDelete); 
+            } else {
+                nStr = "";
+            }
         }
-
-        // Добавляем в Undo стек
         if (undoId < undoArr.length - 1) {
             undoArr[++undoId] = lastRedoOperation;
         }
-
         return nStr;
     }
 }
