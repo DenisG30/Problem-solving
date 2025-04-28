@@ -35,7 +35,13 @@ public class Level1 {
     private static String add(String[] commandArr) {
         if (commandArr.length < 2) return nStr;
         String toAdd = commandArr[1];
-        nStr += toAdd; 
+        nStr += toAdd;
+
+        if (redoId >= 0) {
+            undoId = -1; 
+            redoId = -1; 
+        }
+        
         if (undoId < undoArr.length - 1) {
             undoArr[++undoId] = "-" + toAdd; 
         }
@@ -60,6 +66,12 @@ public class Level1 {
             deleted = nStr.substring(nStr.length() - num); 
             nStr = nStr.substring(0, nStr.length() - num); 
         }
+
+        if (redoId >= 0) {
+            undoId = -1; 
+            redoId = -1; 
+        }
+        
         if (undoId < undoArr.length - 1) {
             undoArr[++undoId] = deleted; 
         }
