@@ -85,7 +85,7 @@ public class Level1 {
         if (undoId < 0) return nStr; 
         String lastOperation = undoArr[undoId--];
         if (lastOperation.startsWith("-")) { 
-            nStr = nStr.substring(0, nStr.length() + lastOperation.length() - 1); 
+            nStr = nStr.substring(0, nStr.length() - lastOperation.length() + 1); 
         } else { 
             nStr += lastOperation; 
         }
