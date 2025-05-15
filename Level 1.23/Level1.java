@@ -12,7 +12,7 @@ public class Level1 {
                 delete(grid);
             } else { 
                 age(grid);
-                fillСells(grid);
+                fillCells(grid);
             }
         }
        
@@ -33,7 +33,7 @@ public class Level1 {
         }
     }
     
-    private static void fillСells(char[][] grid) {
+    private static void fillCells(char[][] grid) {
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == '.') {
