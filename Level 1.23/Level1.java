@@ -47,7 +47,7 @@ public class Level1 {
         boolean[][] toDelete = new boolean[grid.length][grid[0].length];   
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] >= '3') { 
+                if (grid[i][j] - '0' >= 3) { 
                     toDelete[i][j] = true;
                     markToDelete(toDelete, grid, i, j);
                 }
