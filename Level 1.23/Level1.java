@@ -1,0 +1,77 @@
+public class Level1 {
+    public static String[] treeOfLife(int H, int W, int N, String[] tree) {
+        char[][] grid = new char[H][W]; 
+        
+        for (int i = 0; i < H; i++) {
+            grid[i] = tree[i].toCharArray();
+        }     
+
+        for (int year = 1; year <= N; year++) {
+            if (year % 2 == 1) { 
+                age(grid); 
+                delete(grid);
+            } else { 
+                age(grid);
+                fillСells(grid);
+            }
+        }
+       
+        String[] result = new String[H];
+        for (int i = 0; i < H; i++) {
+            result[i] = new String(grid[i]);
+        }
+        return result;
+    }
+
+    private static void age(char[][] grid) {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] != '.') {
+                    grid[i][j] = (char) (grid[i][j] + 1);
+                }
+            }
+        }
+    }
+    
+    private static void fillСells(char[][] grid) {
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] == '.') {
+                    grid[i][j] = '+'; 
+                }
+            }
+        }
+    }
+    
+    private static void delete(char[][] grid) {
+        boolean[][] toDelete = new boolean[grid.length][grid[0].length];   
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (grid[i][j] >= '3') { 
+                    toDelete[i][j] = true;
+                    markToDelete(toDelete, grid, i, j);
+                }
+            }
+        }
+            
+        for (int i = 0; i < grid.length; i++) {
+            for (int j = 0; j < grid[i].length; j++) {
+                if (toDelete[i][j]) {
+                    grid[i][j] = '.';
+                }
+            }
+        }
+    }
+
+    private static void markToDelete(boolean[][] toDelete, char[][] grid, int x, int y) {
+        int[] dx = {-1, 1, 0, 0};
+        int[] dy = {0, 0, -1, 1};
+        for (int d = 0; d < 4; d++) {
+            int nx = x + dx[d];
+            int ny = y + dy[d];     
+            if (nx >= 0 && nx < grid.length && ny >= 0 && ny < grid[0].length) {
+                toDelete[nx][ny] = true; 
+            }
+        }
+    }
+}
