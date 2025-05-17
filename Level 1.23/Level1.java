@@ -7,12 +7,11 @@ public class Level1 {
         }     
 
         for (int year = 1; year <= N; year++) {
+            grid = age(grid); 
             if (year % 2 == 1) { 
-                age(grid); 
-                delete(grid);
+                grid = delete(grid); 
             } else { 
-                age(grid);
-                fillCells(grid);
+                grid = fillCells(grid); 
             }
         }
        
@@ -23,27 +22,37 @@ public class Level1 {
         return result;
     }
 
-    private static void age(char[][] grid) {
+    private static char[][] age(char[][] grid) {
+        char[][] newGrid = new char[grid.length][grid[0].length];
+
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] != '.') {
-                    grid[i][j] = (char) (grid[i][j] + 1);
+                    newGrid[i][j] = (char) (grid[i][j] + 1);
+                } else {
+                    newGrid[i][j] = '.';
                 }
             }
         }
+        return newGrid;
     }
     
-    private static void fillCells(char[][] grid) {
+    private static char[][] fillCells(char[][] grid) {
+        char[][] newGrid = new char[grid.length][grid[0].length];
+
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] == '.') {
-                    grid[i][j] = '+'; 
+                    newGrid[i][j] = '+'; 
+                } else {
+                    newGrid[i][j] = grid[i][j]; 
                 }
             }
         }
+        return newGrid;
     }
     
-    private static void delete(char[][] grid) {
+    private static char[][] delete(char[][] grid) {
         boolean[][] toDelete = new boolean[grid.length][grid[0].length];   
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
@@ -53,14 +62,20 @@ public class Level1 {
                 }
             }
         }
-            
+
+        char[][] newGrid = new char[grid.length][grid[0].length];
+
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (toDelete[i][j]) {
-                    grid[i][j] = '.';
+                    newGrid[i][j] = '.';
+                } else {
+                    newGrid[i][j] = grid[i][j]; 
                 }
             }
         }
+        
+        return newGrid;
     }
 
     private static void markToDelete(boolean[][] toDelete, char[][] grid, int x, int y) {
