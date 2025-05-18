@@ -1,5 +1,5 @@
 public class Level1 {
-    public static String[] treeOfLife(int H, int W, int N, String[] tree) {
+    public static String[] TreeOfLife(int H, int W, int N, String[] tree) {
         char[][] grid = new char[H][W]; 
         
         for (int i = 0; i < H; i++) {
