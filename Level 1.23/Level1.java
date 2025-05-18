@@ -53,12 +53,13 @@ public class Level1 {
     }
     
     private static char[][] delete(char[][] grid) {
-        boolean[][] toDelete = new boolean[grid.length][grid[0].length];   
+        boolean[][] toDelete = new boolean[grid.length][grid[0].length];
+
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[i].length; j++) {
                 if (grid[i][j] - '0' >= 3) { 
                     toDelete[i][j] = true;
-                    markToDelete(toDelete, grid, i, j);
+                    toDelete = markToDelete(toDelete, grid, i, j);
                 }
             }
         }
@@ -78,7 +79,7 @@ public class Level1 {
         return newGrid;
     }
 
-    private static void markToDelete(boolean[][] toDelete, char[][] grid, int x, int y) {
+    private static boolean[][] markToDelete(boolean[][] toDelete, char[][] grid, int x, int y) {
         int[] dx = {-1, 1, 0, 0};
         int[] dy = {0, 0, -1, 1};
         for (int d = 0; d < 4; d++) {
@@ -88,5 +89,6 @@ public class Level1 {
                 toDelete[nx][ny] = true; 
             }
         }
+        return toDelete;
     }
 }
