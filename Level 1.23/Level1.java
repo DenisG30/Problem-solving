@@ -82,6 +82,7 @@ public class Level1 {
     private static boolean[][] markToDelete(boolean[][] toDelete, char[][] grid, int x, int y) {
         int[] dx = {-1, 1, 0, 0};
         int[] dy = {0, 0, -1, 1};
+
         for (int d = 0; d < 4; d++) {
             int nx = x + dx[d];
             int ny = y + dy[d];     
