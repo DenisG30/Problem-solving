@@ -24,7 +24,7 @@ public class Level1 {
         }
 
         if (quanElem == 0) {
-            return true;
+            return false;
         }
 
         if (quanElem == 2) {
