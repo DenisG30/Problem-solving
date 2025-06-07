@@ -7,14 +7,9 @@ public class Level1 {
                 doors[j] = !doors[j]; 
             }
         }
-
         StringBuilder res = new StringBuilder();
-        for (int i = 0; i < doors.length; i++) {
-            if (doors[i] == 1) {
-                res.append('1'); 
-            } else {
-                res.append('0'); 
-            }
+        for (boolean door : doors) {
+            res.append(door ? '1' : '0');
         }
 
         return res.toString();
