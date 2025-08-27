@@ -1,3 +1,8 @@
+// Task 1. Linked list
+
+// Exercise No.7 
+// Tests for exercises 1-6
+
 public class LinkedListTest {
     private LinkedList list;
 
