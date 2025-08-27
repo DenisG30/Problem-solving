@@ -1,3 +1,5 @@
+// Task 1. Linked list
+
 public class LinkedList
 {
      public Node head;
@@ -27,6 +29,9 @@ public class LinkedList
         return null;
     }
 
+// Exercise No.4 (Search for all nodes by a specific value)
+// Time complexity O(n)
+// Spatial complexity O(n)
     public ArrayList<Node> findAll(int _value) {
         ArrayList<Node> nodes = new ArrayList<Node>();
         Node current = this.head; 
@@ -42,6 +47,9 @@ public class LinkedList
         return nodes;
      }
 
+// Exercise No.1 (Deleting one node by its value)
+// Time complexity O(n)
+// Spatial complexity O(1)
      public boolean remove(int _value) {
         if (head == null) {
              return false;
@@ -70,6 +78,9 @@ public class LinkedList
         return false;
     }
 
+// Exercise No.2 (Deleting all nodes by its value)
+// Time complexity O(n)
+// Spatial complexity O(1)
     public void removeAll(int _value) {
         while (head != null && head.value == _value) {
             head = head.next;
@@ -94,11 +105,17 @@ public class LinkedList
         }
     }
 
+// Exercise No.3 (Clearing all content)
+// Time complexity O(1)
+// Spatial complexity O(1)
      public void clear() {
         head = null;
         tail = null;
      }
 
+// Exercise No.5 (List length calculations)
+// Time complexity O(n)
+// Spatial complexity O(1)
      public int count() {
         int count = 0;
         Node current = this.head;
@@ -110,6 +127,9 @@ public class LinkedList
         return count;
      }
 
+// Exercise No.6 (Inserting a new node after a given node)
+// Time complexity O(1)
+// Spatial complexity O(1)
     public void insertAfter(Node _nodeAfter, Node _nodeToInsert) {
         if (_nodeAfter == null) {
             _nodeToInsert.next = this.head;
