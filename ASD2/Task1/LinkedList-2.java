@@ -3,12 +3,12 @@ public class LinkedListTest {
 
     @BeforeEach
     public void setUp() {
-        list = new LinkedList();
+        list = new LinkedList();   
     }
 
     @Test
     public void testFindInEmptyList() {
-        assertNull(list.find(1));
+          assertNull(list.find(1));
     }
 
     @Test
@@ -181,7 +181,7 @@ public class LinkedListTest {
 
         assertEquals(nodeToInsert, firstNode.next);
         assertEquals(secondNode, nodeToInsert.next);
-        assertEquals(nodeToInsert, list.tail); 
+        assertEquals(secondNode, list.tail); 
     }
 }
 
