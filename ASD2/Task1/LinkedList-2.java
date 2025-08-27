@@ -1,3 +1,9 @@
+// Task 1. Linked list
+
+// Exercise No.8* 
+// Function that takes two linked lists of integers as input and, if their lengths are equal, 
+// returns a list where each element is the sum of the corresponding elements in the input lists.
+
 public class LinkedList {
     public Node head;
     public Node tail;
@@ -7,6 +13,8 @@ public class LinkedList {
         tail = null;
     }
 
+// Time complexity O(1)
+// Spatial complexity O(n)
     public void addInTail(Node item) {
         if (this.head == null)
             this.head = item;
@@ -15,6 +23,8 @@ public class LinkedList {
         this.tail = item;
     }
 
+// Time complexity O(n)
+// Spatial complexity O(1)
     public int count() {
         int count = 0;
         Node current = this.head;
@@ -26,6 +36,8 @@ public class LinkedList {
         return count;
     }
 
+// Time complexity O(n)
+// Spatial complexity O(n)
     public LinkedList sum(LinkedList other) {
 
         LinkedList result = new LinkedList();
