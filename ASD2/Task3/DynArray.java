@@ -1,7 +1,4 @@
 // Task 3. Dynamic arrays
-
-import java.lang.reflect.Array;
-
 public class DynArray<T>
 {
      public T [] array;
