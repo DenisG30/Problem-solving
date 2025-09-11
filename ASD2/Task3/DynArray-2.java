@@ -14,9 +14,6 @@ public class DynArray<T>
        makeArray(16);
      }
 
-// Exercise No.1 (Formation of a memory block)
-// Time complexity O(n)
-// Spatial complexity O(n)
      public void makeArray(int new_capacity)
      {
         // array = (T[]) Array.newInstance(this.clazz, new_capacity);
@@ -31,9 +28,6 @@ public class DynArray<T>
         capacity = new_capacity;
      }
 
-// Exercise No.1 (Getting an object by its index)
-// Time complexity O(1)
-// Spatial complexity O(1)
      public T getItem(int index)
      {
         if (index < 0 || index >= count) {
@@ -42,9 +36,6 @@ public class DynArray<T>
         return array[index];
      }
 
-// Exercise No.1 (Adding a new element to the end of the array)
-// Time complexity O(n)
-// Spatial complexity O(1)
      public void append(T itm)
      {
         if (count >= capacity) {
@@ -55,10 +46,6 @@ public class DynArray<T>
         count++;
      }
      
-
-// Exercise No.2 (Location in the i-th position of the object)
-// Time complexity O(n)
-// Spatial complexity O(1)
      public void insert(T itm, int index)
      {
         if (index < 0 || index > count) {
@@ -77,9 +64,6 @@ public class DynArray<T>
         count++;
      }
 
-// Exercise No.3 (Deleting an object from the i-th position)
-// Time complexity O(n)
-// Spatial complexity O(1)
      public void remove(int index)
      {
         if (index < 0 || index >= count) {
@@ -113,5 +97,10 @@ public class MultiDimArray<T> {
             dimensions.append(dim);
         }
     }
-
 }
+
+//Рефлексия по заданию №8 "Функция суммирования двух связанных списков" :
+/*
+Действительно, не проверил, какой код залил в гит. Я понимаю, что списки для сложения должны быть равны и на "бумаге" это учитывал. 
+Но не указал это в коде. Даже в тестах не проверил случай, когда количество элементов могут быть различны. Решение понятно. Буду внимательнее. 
+*/
