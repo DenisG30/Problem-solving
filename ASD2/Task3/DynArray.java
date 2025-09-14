@@ -94,11 +94,9 @@ public class DynArray<T>
 
         array[count] = null;
 
-        if (capacity > 16 && count > 0 && count == capacity / 4) {
-            makeArray(capacity / 2);
-        } else if (capacity == 16) {
-            makeArray(16);
-        }
+        if (capacity > 16 && count > 0 && (double) capacity / count > 2.0) {
+                 makeArray((int)((double)capacity / 1.5));
+          }
      }
 }
 
