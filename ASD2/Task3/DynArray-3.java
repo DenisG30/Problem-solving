@@ -59,6 +59,22 @@ public class DynArrayTest {
         assertTrue(exception.getMessage().contains("Going beyond borders"));
     }
 
+     @Test
+    public void testRemoveWithinCapacity2048() {
+        for (int i = 1; i < 1048; i++) {
+            dynArray.append(i);
+        }
+        
+        
+        if (dynArray.capacity == 2048) {
+            for(int i = 0; i < 1001; i++) {
+                dynArray.remove(dynArray.count - 1);
+            }
+        }
+        assertEquals(46, dynArray.count);
+        assertEquals(79, dynArray.capacity);
+    }
+
     @Test
     public void testRemoveWithinCapacity() {
         dynArray.append(1);
