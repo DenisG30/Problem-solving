@@ -1,21 +1,18 @@
-import java.util.*;
-
 public class Deque<T>
 {
     public Node head;
     public Node tail;
+    int count = 0;
 
 
     public Deque()
     {
         head = null;
         tail = null;
-     // инициализация внутреннего хранилища
     }
 
     public void addFront(T item)
     {
-     // добавление в голову
         Node<T> newNode = new Node<>(item); 
         if (head == null) {
             this.head = newNode;
@@ -27,6 +24,7 @@ public class Deque<T>
             head.prev = newNode;
             this.head = newNode;
         }
+        count++;
     }
 
     public void addTail(T item)
@@ -42,31 +40,44 @@ public class Deque<T>
             newNode.prev = tail;
         }
         this.tail = newNode;
+        count++;
     }
 
     public T removeFront()
     {
-     // удаление из головы
-     if(head != null) {
-        head = head.next;
-        if (head == null) {
+     if(count == 1) {
+            head = head.next;
             tail = null;
-        } else {
+            count--;
+        } else if(count > 1){
+            head = head.next;
             head.prev = null;
+            count--;
         }
-     }
      return null;
     }
 
     public T removeTail()
     {
-     // удаление из хвоста
-     return null;
+        if(count == 1) {
+            tail = tail.prev;
+            head = null;
+            count--;
+        } else if(count > 1){
+            tail = tail.prev;
+            tail.next = null;
+            count--;
+        }
+        
+        return null;
     }
         
     public int size()
     {
-     return 0; // размер очереди
+        if(count > 0) {
+            return count;
+        }
+        return 0;
     }
 }
 
@@ -83,3 +94,6 @@ class Node<T>
        prev = null;
      }
 }
+
+
+
