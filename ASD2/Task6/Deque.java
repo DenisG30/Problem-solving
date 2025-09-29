@@ -45,39 +45,42 @@ public class Deque<T>
 
     public T removeFront()
     {
-        if(count == 0) {
-            return null;
+        if(count > 0) {
+            T value = head.value;
+        
+            if(count == 1) {
+                head = tail = null;
+                
+            } else {
+                head = head.next;
+                head.prev = null;
+            }
+            count--;
+            return value; 
         }
 
-        T value = head.value;
+        return null;
+
         
-        if(count == 1) {
-            head = tail = null;
-            
-        } else {
-            head = head.next;
-            head.prev = null;
-        }
-        count--;
-        return value;
     }
 
     public T removeTail()
     {
-        if(count == 0) {
-            return null;
+        if(count > 0) {
+            T value = tail.value;
+        
+            if(count == 1) {
+                tail = head = null;           
+            } else {
+                tail = tail.prev;
+                tail.next = null;     
+            }
+            count--;
+            return value;
         }
 
-        T value = tail.value;
+        return null;
         
-        if(count == 1) {
-            tail = head = null;           
-        } else {
-            tail = tail.prev;
-            tail.next = null;     
-        }
-        count--;
-        return value;
     }
         
     public int size()
