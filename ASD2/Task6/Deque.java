@@ -46,7 +46,7 @@ public class Deque<T>
     public T removeFront()
     {
         if(count > 0) {
-            T value = head.value;
+            T value = (T) head.value;
         
             if(count == 1) {
                 head = head.next;
@@ -68,7 +68,7 @@ public class Deque<T>
     public T removeTail()
     {
         if(count > 0) {
-            T value = tail.value;
+            T value = (T) tail.value;
         
             if(count == 1) {
                 tail = tail.prev;
