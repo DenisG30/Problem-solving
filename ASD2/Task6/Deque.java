@@ -49,7 +49,8 @@ public class Deque<T>
             T value = head.value;
         
             if(count == 1) {
-                head = tail = null;
+                head = head.next;
+                tail = null;
                 
             } else {
                 head = head.next;
@@ -70,7 +71,8 @@ public class Deque<T>
             T value = tail.value;
         
             if(count == 1) {
-                tail = head = null;           
+                tail = tail.prev;
+                head = null;          
             } else {
                 tail = tail.prev;
                 tail.next = null;     
