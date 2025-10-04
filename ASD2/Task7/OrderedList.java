@@ -78,9 +78,8 @@ import java.util.*;
 	        current.next = newNode;
 	    }
 	}
-    
-    
 
+	  
     public Node<T> find(T val)
     {
         public Node<T> find(T val) {
