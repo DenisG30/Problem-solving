@@ -17,7 +17,6 @@ import java.util.*;
   {
     public Node<T> head, tail;
     private boolean _ascending;
-    int count = 0;
 
     public OrderedList(boolean asc)
     {
@@ -49,35 +48,37 @@ import java.util.*;
     public void add(T value)
     {
            Node<T> newNode = new Node<>(value);
-    
+
 	    if (head == null) {
-	        head = tail = newNode; 
+	        head = tail = newNode;
 	        return;
 	    }
-
-    	Node<T> current = head;
-   
-	    while (current != null) {
-	        if (compare(value, current.value) < 0)
-	            if (current.prev == null) {
-	                newNode.next = head;
-	                head.prev = newNode;
-	                head = newNode;
-	            } else { 
-	                newNode.prev = current.prev;
-	                newNode.next = current;
-	                current.prev.next = newNode;
-	                current.prev = newNode;
-	            }
-	            
-	            return;
-	        }
+	
+	    Node<T> current = head;
+	
+	    if (compare(value, head.value) < 0) {
+	        newNode.next = head;
+	        head.prev = newNode;
+	        head = newNode;
+	        return;
+	    }
+	
+	    while (current.next != null && compare(value, current.next.value) >= 0) {
 	        current = current.next;
 	    }
-	    
-	    tail.next = newNode;
-	    newNode.prev = tail;
-	    tail = newNode;
+	
+	    if (current.next == null) {
+	        current.next = newNode;
+	        newNode.prev = current;
+	        tail = newNode;
+	    } else { 
+	        newNode.prev = current;
+	        newNode.next = current.next;
+	        current.next.prev = newNode;
+	        current.next = newNode;
+	    }
+	}
+    
     
 
     public Node<T> find(T val)
@@ -96,10 +97,7 @@ import java.util.*;
 	    }
 	    return null; 
 	}
-// Задание No.6
-// С учетом упорядоченности и возможности раннего прерывания, в среднем случае сложность поиска остается O(n), 
-// но в лучшем случае (когда искомый элемент меньше всех элементов в списке или больше всех) операция может завершиться за O(1). 
-    
+	  
 
     public void delete(T val)
     {
