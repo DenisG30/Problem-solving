@@ -1,6 +1,5 @@
 import java.util.*;
 
-
  class Node<T>
   {
     public T value;
@@ -83,14 +82,21 @@ import java.util.*;
 
     public Node<T> find(T val)
     {
-        Node<T> current = head;
-        while (current != null) {
-            if (compare(current.value, val) == 0) {
-                return current; 
-            }
-            current = current.next;
+        public Node<T> find(T val) {
+    Node<T> current = head;
+
+    while (current != null) {
+        int comparison = compare(current.value, val);
+        if (comparison == 0) {
+            return current;
+        } else if (comparison > 0) {
+            return null;
         }
-        return null;
+        current = current.next;
+    }
+    return null; 
+}
+
     }
 
     public void delete(T val)
