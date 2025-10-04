@@ -29,12 +29,18 @@ import java.util.*;
 
     public int compare(T v1, T v2)
     {
-        int comparison = v1.compareTo(v2);
-		if (comparison > 0) {
-         	return 1;}
-         else if (comparison < 0) {
-         	return -1;
-         }
+		int comparison = 0;
+        if (v1 instanceof String && v2 instanceof String) {
+            String str1 = ((String) v1).trim(); 
+            String str2 = ((String) v2).trim();
+            comparison = str1.compareTo(str2);
+        }
+        comparison = v1.compareTo(v2);
+		
+        if(comparison != 0) {
+			return comparison;
+		}
+		
         return 0;
       // -1 если v1 < v2
       // 0 если v1 == v2
