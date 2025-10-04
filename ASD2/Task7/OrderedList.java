@@ -83,21 +83,21 @@ import java.util.*;
     public Node<T> find(T val)
     {
         public Node<T> find(T val) {
-    Node<T> current = head;
+	    Node<T> current = head;
+	
+	    while (current != null) {
+	        int comparison = compare(current.value, val);
+	        if (comparison == 0) {
+	            return current;
+	        } else if (comparison > 0) {
+	            return null;
+	        }
+	        current = current.next;
+	    }
+	    return null; 
+	}
 
-    while (current != null) {
-        int comparison = compare(current.value, val);
-        if (comparison == 0) {
-            return current;
-        } else if (comparison > 0) {
-            return null;
-        }
-        current = current.next;
-    }
-    return null; 
-}
-
-    }
+    
 
     public void delete(T val)
     {
@@ -155,3 +155,6 @@ import java.util.*;
         return r;
     }
   }
+
+
+
