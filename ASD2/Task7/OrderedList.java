@@ -73,7 +73,7 @@ import java.util.*;
 	    tail.next = newNode;
 	    newNode.prev = tail;
 	    tail = newNode;
-    }
+    
 
     public Node<T> find(T val)
     {
