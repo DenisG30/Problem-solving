@@ -27,22 +27,14 @@ import java.util.*;
 
     public int compare(T v1, T v2)
     {
-		int comparison = 0;
-        if (v1 instanceof String && v2 instanceof String) {
-            String str1 = ((String) v1).trim(); 
-            String str2 = ((String) v2).trim();
-            comparison = str1.compareTo(str2);
-        }
-        comparison = v1.compareTo(v2);
-		
-        if(comparison != 0) {
-			return comparison;
-		}
-		
-        return 0;
-      // -1 если v1 < v2
-      // 0 если v1 == v2
-      // +1 если v1 > v2
+		if (v1 instanceof String && v2 instanceof String) {
+           String str1 = ((String) v1).trim();
+           String str2 = ((String) v2).trim();
+           return str1.compareTo(str2);
+       }
+       if (v1 instanceof Comparable && v2 instanceof Comparable) {
+           return ((Comparable<T>) v1).compareTo(v2);
+       }
     }
 
     public void add(T value)
@@ -83,17 +75,14 @@ import java.util.*;
     public Node<T> find(T val)
     {
 	    Node<T> current = head;
-	
-	    while (current != null) {
-	        int comparison = compare(current.value, val);
-	        if (comparison == 0) {
-	            return current;
-	        } else if (comparison > 0) {
-	            return null;
-	        }
-	        current = current.next;
-	    }
-	    return null; 
+       while (current != null) {
+           int comparison = compare(current.value, val);
+           if (comparison == 0) {
+               return current;
+           }
+           current = current.next;
+       }
+       return null; 
 	}
 	  
 
