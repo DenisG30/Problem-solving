@@ -27,14 +27,23 @@ import java.util.*;
 
     public int compare(T v1, T v2)
     {
-		if (v1 instanceof String && v2 instanceof String) {
-           String str1 = ((String) v1).trim();
-           String str2 = ((String) v2).trim();
-           return str1.compareTo(str2);
-       }
-       if (v1 instanceof Comparable && v2 instanceof Comparable) {
-           return ((Comparable<T>) v1).compareTo(v2);
-       }
+        int res = 0;
+
+        if (v1 instanceof String && v2 instanceof String) {
+            String str1 = ((String) v1).trim();
+            String str2 = ((String) v2).trim();
+            res = str1.compareTo(str2);
+        }
+
+        if (v1 instanceof Integer && v2 instanceof Integer) {
+            Integer int1 = (Integer) v1;
+            Integer int2 = (Integer) v2;
+            res =  Integer.compare(int1, int2); 
+        }
+        
+        if(res != 0) return res;
+        
+        return 0;
     }
 
     public void add(T value)
