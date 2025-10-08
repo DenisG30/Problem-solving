@@ -82,7 +82,6 @@ import java.util.*;
 	  
     public Node<T> find(T val)
     {
-        public Node<T> find(T val) {
 	    Node<T> current = head;
 	
 	    while (current != null) {
