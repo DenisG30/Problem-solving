@@ -116,7 +116,7 @@ import java.util.*;
     if (head == null) {
         tail = null;
     }
-
+}
 
     public void clear(boolean asc)
     {
@@ -140,8 +140,7 @@ import java.util.*;
        return 0;
     }
 
-    ArrayList<Node<T>> getAll() // выдать все элементы упорядоченного 
-                           // списка в виде стандартного списка
+    ArrayList<Node<T>> getAll()
     {
         ArrayList<Node<T>> r = new ArrayList<Node<T>>();
         Node<T> node = head;
