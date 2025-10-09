@@ -48,36 +48,36 @@ import java.util.*;
 
     public void add(T value)
     {
-           Node<T> newNode = new Node<>(value);
+        Node<T> newNode = new;	Node<>(value);
 
-	    if (head == null) {
-	        head = tail = newNode;
-	        return;
-	    }
-	
-	    Node<T> current = head;
-	
-	    if (compare(value, head.value) < 0) {
-	        newNode.next = head;
-	        head.prev = newNode;
-	        head = newNode;
-	        return;
-	    }
-	
-	    while (current.next != null && compare(value, current.next.value) >= 0) {
-	        current = current.next;
-	    }
-	
-	    if (current.next == null) {
-	        current.next = newNode;
-	        newNode.prev = current;
-	        tail = newNode;
-	    } else { 
-	        newNode.prev = current;
-	        newNode.next = current.next;
-	        current.next.prev = newNode;
-	        current.next = newNode;
-	    }
+    if (head == null) {
+        head = tail = newNode;
+        return;
+    }
+
+    Node<T> current = head;
+
+    if ((_ascending && compare(value, head.value) < 0) || (!_ascending && compare(value, head.value) > 0)) {
+        newNode.next = head;
+        head.prev = newNode;
+        head = newNode;
+        return;
+    }
+
+    while (current.next != null && ((_ascending && compare(value, current.next.value) >= 0) || (!_ascending && compare(value, current.next.value) <= 0))) {
+        current = current.next;
+    }
+
+    if (current.next == null) {
+        current.next = newNode;
+        newNode.prev = current;
+        tail = newNode;
+    } else { 
+        newNode.prev = current;
+        newNode.next = current.next;
+        current.next.prev = newNode;
+        current.next = newNode;
+    }
 	}
 
 	  
@@ -93,28 +93,30 @@ import java.util.*;
        }
        return null; 
 	}
-	  
 
-    public void delete(T val)
-    {
-    	Node<T> nodeToDelete = find(val);
-    	
-        if (nodeToDelete == null) {
-        	return;
-        }
+    public void delete(T val) {
+    Node<T> nodeToDelete = find(val);
 
-        if (nodeToDelete.prev != null) {
-            nodeToDelete.prev.next = nodeToDelete.next; 
-        } else {
-            head = nodeToDelete.next;
-        }
-
-        if (nodeToDelete.next != null) {
-            nodeToDelete.next.prev = nodeToDelete.prev;
-        } else {
-            tail = nodeToDelete.prev;
-        }
+    if (nodeToDelete == null) {
+        return;
     }
+
+    if (nodeToDelete.prev != null) {
+        nodeToDelete.prev.next = nodeToDelete.next; 
+    } else {
+        head = nodeToDelete.next;
+    }
+
+    if (nodeToDelete.next != null) {
+        nodeToDelete.next.prev = nodeToDelete.prev;
+    } else {
+        tail = nodeToDelete.prev;
+    }
+
+    if (head == null) {
+        tail = null;
+    }
+
 
     public void clear(boolean asc)
     {
