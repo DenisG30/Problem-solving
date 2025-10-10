@@ -48,7 +48,7 @@ import java.util.*;
 
     public void add(T value)
     {
-        Node<T> newNode = new;	Node<>(value);
+        Node<T> newNode = new	Node<>(value);
 
     if (head == null) {
         head = tail = newNode;
