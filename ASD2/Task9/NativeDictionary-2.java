@@ -114,7 +114,50 @@ class BitStringDictionary<V> {
     }
 }
 
+// Рефлексия. 
+/* 
+    Задача №9. 
+    Не добавил свой код на гитхаб.
 
+    public OrderedList<T> merge(OrderedList<T> other) {
+    OrderedList<T> mergedList = new OrderedList<>(this._ascending);
+    
+    Node<T> current1 = this.head;
+    Node<T> current2 = other.head;
+
+    while (current1 != null && current2 != null) {
+        if (compare(current1.value, current2.value) <= 0) {
+            mergedList.add(current1.value);
+            current1 = current1.next;
+        } else {
+            mergedList.add(current2.value);
+            current2 = current2.next;
+        }
+    }
+
+    while (current1 != null) {
+        mergedList.add(current1.value);
+        current1 = current1.next;
+    }
+
+    while (current2 != null) {
+        mergedList.add(current2.value);
+        current2 = current2.next;
+    }
+
+    return mergedList;
+}
+    
+    Задача №10. 
+    Решение аналогично рекомендации. Но не проверил совпадают ли длины списков.
+    
+
+	Задача №11. 
+	Решение из рекомендации понятно. Его использование было бы проще. Действительно, не было необходимости использовать Map в данной задаче.
+    
+    Задача №12.
+    Решение из рекомендации понятно. Не подумал про бинарный поиск. Было бы проще.
+*/
 
 
 
