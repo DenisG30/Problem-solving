@@ -16,7 +16,6 @@ public class PowerSetTest {
         set2 = new PowerSet();
     }
 
-
     @Test
     public void testPut() {
         
@@ -60,6 +59,8 @@ public class PowerSetTest {
         set2.put("C");
 
         PowerSet union = set1.union(set2);
+        
+
         assertNotNull(union);
         assertEquals(3, union.size());
 
@@ -73,12 +74,16 @@ public class PowerSetTest {
     public void testDifference() {
         set1.put("A");
         set1.put("B");
+        set1.put("D");
+        set1.put("E");
         
+        set2.put("B");
         set2.put("C");
         
         PowerSet difference = set1.difference(set2);
+
         assertNotNull(difference);
-        assertEquals(1, difference.size());
+        assertEquals(3, difference.size());
 
     }
 
@@ -94,6 +99,7 @@ public class PowerSetTest {
         assertTrue(set2.isSubset(set1));
 
         PowerSet set3 = new PowerSet();
+        set3.put("B");
         set3.put("C");
         assertFalse(set1.isSubset(set3));
     }
@@ -101,8 +107,12 @@ public class PowerSetTest {
     @Test
     public void testEquals() {
 
+        assertTrue(set1.equals(set2));
+
         set1.put("A");
         set1.put("B");
+
+        assertFalse(set1.equals(set2));
 
         set2.put("A");
         set2.put("B");
@@ -131,3 +141,9 @@ public class PowerSetTest {
         assertTrue(endTime - startTime < 2000);
     }
 }
+
+
+
+
+
+
