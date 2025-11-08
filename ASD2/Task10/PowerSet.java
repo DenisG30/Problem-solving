@@ -11,9 +11,8 @@ public class PowerSet
 
     public PowerSet()
     {
-        // ваша реализация хранилища
         this.size = 20000;
-        this.elements = new String[size]; // Начальный размер массива
+        this.elements = new String[size];
         this.step = 1;
         this.countElem = 0;
     }
@@ -58,7 +57,6 @@ public class PowerSet
 
     public int size()
     {
-        // количество элементов в множестве
         if(countElem > 0) {
             return countElem;
         }
@@ -71,7 +69,7 @@ public class PowerSet
         int slotIndex = seekSlot(value);
 
         if (size == elements.length) {
-            resize(); // Увеличиваем размер массива, если он полон
+            resize();
         }
        
         if (slotIndex != -1 && elements[slotIndex] == null) { 
@@ -121,7 +119,6 @@ public class PowerSet
 
     public PowerSet intersection(PowerSet set2)
     {
-        // пересечение текущего множества и set2
         PowerSet result = new PowerSet();
 
         if (this.size() == 0 && set2.size() == 0 || this.size() != 0 && set2.size() == 0 || this.size() == 0 && set2.size() != 0) {
@@ -142,7 +139,6 @@ public class PowerSet
 
     public PowerSet union(PowerSet set2)
     {
-        // объединение текущего множества и set2
         if (set2 == null) {
             return null;
         }
@@ -161,13 +157,13 @@ public class PowerSet
 
         PowerSet result = new PowerSet();
         
-        for (int i = 0; i < size; i++) {
+        for (int i = 0; i < this.elements.length; i++) {
             if (elements[i] != null) {
                 result.put(elements[i]);
             }
         }
 
-        for (int i = 0; i < set2.size(); i++) {
+        for (int i = 0; i < set2.elements.length; i++) {
             if (set2.elements[i] != null) {
                 result.put(set2.elements[i]);
             }
@@ -183,17 +179,18 @@ public class PowerSet
 
     public PowerSet difference(PowerSet set2)
     {
-        if (set2 == null || this.size() != 0 && set2.size() == 0 || this.size() == 0 && set2.size() != 0) {
+        if (set2 == null || this.size() == 0 && set2.size() != 0) {
             return null;
         }
         
-        if (this.size() == 0 && set2.size() == 0) {
+        if (this.size() == 0 && set2.size() == 0 || this.size() != 0 && set2.size() == 0) {
             return this;
         }
-        // разница текущего множества и set2
+        
         PowerSet result = new PowerSet();
-        for (int i = 0; i < size; i++) {
-            if (!set2.get(elements[i])) {
+
+        for (int i = 0; i < this.elements.length; i++) {
+            if (elements[i] != null && !set2.get(elements[i])) {
                 result.put(elements[i]);
             }
         }
@@ -206,58 +203,48 @@ public class PowerSet
 
     public boolean isSubset(PowerSet set2)
     {
-        if (set2 == null || this.size() == 0 && set2.size() != 0) {
+        if (set2 == null || this.size() == 0 && set2.size() != 0 || this.size() < set2.size()) {
             return false;
         }
         
-        if (this.size() == 0 && set2.size() == 0) {
+        if (this.size() == 0 && set2.size() == 0 || this.size() != 0 && set2.size() == 0) {
             return true;
         }
 
-        boolean flag = false;
-            for (int i = 0; i < set2.size(); i++) {
+        boolean flag = true;
+
+        for (int i = 0; i < set2.elements.length; i++) {
+            if (set2.elements[i] != null && !this.get(set2.elements[i])) {
                 flag = false;
-                if (this.get(set2.elements[i])) {
-                    flag = true;
-                } else {
-                    break;
-                }
+                break;
             }
+        }
             
-            if(flag) {
-                return true;
-            }
-            
-                // возвращает true, если set2 есть
-                // подмножество текущего множества,
-                // иначе false
-            return false;
+        if(flag) {
+            return true;
+        }
+        return false;
     }
 
 
-        public boolean equals(PowerSet set2)
+    public boolean equals(PowerSet set2)
     {
         if(this.size != set2.size) {
             return false;
         }
         
-        boolean flag = false;
-        for (int i = 0; i < size; i++) {
-            flag = false;
-            if (set2.get(elements[i])) {
-                flag = true;
-            } else {
+        boolean flag = true;
+        for (int i = 0; i < this.elements.length; i++) {
+
+            if (this.elements[i] != null && !set2.get(elements[i])) {
+                flag = false;
                 break;
             }
         }
-
+            
         if(flag) {
             return true;
         }
-
-        // возвращает true, 
-        // если set2 равно текущему множеству,
-        // иначе false
         return false;
     }
 
@@ -266,3 +253,7 @@ public class PowerSet
         elements = Arrays.copyOf(elements, newSize);
     }
 }
+
+
+
+
