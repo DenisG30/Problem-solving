@@ -6,7 +6,7 @@ public class PowerSet
     private int size;
 
     public int step;
-    public int countElem;
+    private  int countElem;
 
 
     public PowerSet()
@@ -14,7 +14,7 @@ public class PowerSet
         this.size = 20000;
         this.elements = new String[size];
         this.step = 1;
-        this.countElem = 0;
+        countElem = 0;
     }
 
 
@@ -74,8 +74,8 @@ public class PowerSet
        
         if (slotIndex != -1 && elements[slotIndex] == null) { 
             elements[slotIndex] = value;
-            countElem++;
         }
+        countElem++;
     }
 
 
