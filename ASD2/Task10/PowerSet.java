@@ -66,16 +66,17 @@ public class PowerSet
 
     public void put(String value)
     {
-        int slotIndex = seekSlot(value);
-
-        if (size == elements.length) {
+        if (countElem  == elements.length) {
             resize();
         }
        
+        int slotIndex = seekSlot(value);
+        
         if (slotIndex != -1 && elements[slotIndex] == null) { 
             elements[slotIndex] = value;
+            countElem++;
         }
-        countElem++;
+        
     }
 
 
