@@ -140,7 +140,21 @@ public class PowerSetTest {
         
         assertTrue(endTime - startTime < 2000);
     }
+
+    @Test
+    public void testPut10000() {
+        for(int i = 0; i < 100; i++) {
+            String str = "Value " + i;
+            set.put(str);
+        }
+    }
 }
+
+
+
+
+
+
 
 
 
