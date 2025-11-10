@@ -22,7 +22,7 @@ public class PowerSet
     {
         int hash = 0;
         for (int i = 0; i < value.length(); i++) {
-            hash += value.charAt(i); 
+            hash = 31 * hash + value.charAt(i);
         }
         return hash;
     }
@@ -39,19 +39,20 @@ public class PowerSet
         int index = hashFun(value);
         int originalIndex = index;
         
-        for (; elements[index] != null; index = (index + step) % size) {
+        for (; elements[index] != null; ) {
+
             if (elements[index].compareTo(value) == 0) {
-                return index; 
+                return -1; 
             }
+
+            index = (index + step) % size;
+
             if (index == originalIndex) { 
                 break;
             }
         }
 
-        if (elements[index] == null) {
-            return index;
-        }
-        return -1; 
+        return index; 
     }
 
 
@@ -72,7 +73,7 @@ public class PowerSet
        
         int slotIndex = seekSlot(value);
         
-        if (slotIndex != -1 && elements[slotIndex] == null) { 
+        if (slotIndex != -1) { 
             elements[slotIndex] = value;
             countElem++;
         }
