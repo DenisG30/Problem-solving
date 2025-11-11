@@ -236,7 +236,7 @@ public class PowerSet
     }
 
 
-    public boolean equals(PowerSet set2)
+    public boolean equals(PowerSet<T> set2)
     {
         if(this.size != set2.size) {
             return false;
