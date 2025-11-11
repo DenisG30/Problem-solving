@@ -104,22 +104,26 @@ public class PowerSet
 
     public boolean remove(String value)
     {
-        int index = hashFun(value);
+      int index = hashFun(value);
         int originalIndex = index;
 
-        for (; elements[index] != null; index = (index + step) % size) {
+        for (; elements[index] != null; ) {
+
             if (elements[index].compareTo(value) == 0) {
                 elements[index] =  null;
                 countElem--;
                 return true; 
             }
 
+            index = (index + step) % size;
+
             if (index == originalIndex) { 
                 break;
             }
         }
         return false;
-    }
+
+                
 
 
     public PowerSet intersection(PowerSet set2)
