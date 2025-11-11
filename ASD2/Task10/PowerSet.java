@@ -85,11 +85,14 @@ public class PowerSet
     {
         int index = hashFun(value);
         int originalIndex = index;
-        
-        for (; elements[index] != null; index = (index + step) % size) {
+
+        for (; elements[index] != null; ) {
+
             if (elements[index].compareTo(value) == 0) {
                 return true; 
             }
+
+            index = (index + step) % size;
 
             if (index == originalIndex) { 
                 break;
@@ -251,8 +254,15 @@ public class PowerSet
     }
 
     private void resize() {
-        int newSize = elements.length * 2;
-        elements = Arrays.copyOf(elements, newSize);
+        String[] oldElements = elements;
+        size *= 2;
+        elements = new String[size];
+        countElem = 0;
+        for (String element : oldElements) {
+            if (element != null) {
+                put(element);
+            }
+        }
     }
 }
 
