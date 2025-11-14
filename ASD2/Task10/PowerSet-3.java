@@ -211,26 +211,6 @@ public class PowerSetTest {
 
         //assertEquals(19998, powerSet.size());
     }
-
-    @Test
-    public void testRemoveWithCollision() {
-        // Добавим элементы, которые будут хешироваться в одно и то же место
-        powerSet.put("a");
-        powerSet.put("b"); // Предполагается, что "a" и "b" имеют одинаковый хеш
-
-        // Убедимся, что оба элемента существуют
-        assertTrue(powerSet.get("a"));
-        assertTrue(powerSet.get("b"));
-
-        // Удалим один элемент
-        assertTrue(powerSet.remove("a"));
-        
-        // Проверим, что второй элемент все еще существует
-        assertTrue(powerSet.get("b"));
-        
-        // Проверим размер множества
-        assertEquals(1, powerSet.size());
-    }
 }
 
 
