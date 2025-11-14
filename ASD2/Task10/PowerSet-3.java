@@ -148,6 +148,89 @@ public class PowerSetTest {
             set.put(str);
         }
     }
+
+        //
+    // Неверное удаление элемента из непустого множества
+    //
+
+    @Test
+    public void testRemoveExistingElement() {
+        powerSet.put("test");
+        assertTrue(powerSet.remove("test"));
+        assertFalse(powerSet.get("test"));
+        assertEquals(0, powerSet.size());
+    }
+
+    @Test
+    public void testRemoveNonExistingElement() {
+        powerSet.put("test");
+        assertFalse(powerSet.remove("nonexistent"));
+        assertTrue(powerSet.get("test"));
+        assertEquals(1, powerSet.size());
+    }
+
+    @Test
+    public void testRemoveMultipleElements() {
+        powerSet.put("one");
+        powerSet.put("two");
+        powerSet.put("three");
+
+        assertTrue(powerSet.remove("two"));
+        assertFalse(powerSet.get("two"));
+        assertEquals(2, powerSet.size());
+
+        assertTrue(powerSet.remove("one"));
+        assertFalse(powerSet.get("one"));
+        assertEquals(1, powerSet.size());
+
+        assertTrue(powerSet.remove("three"));
+        assertFalse(powerSet.get("three"));
+        assertEquals(0, powerSet.size());
+    }
+
+    @Test
+    public void testRemoveFromEmptySet() {
+        assertFalse(powerSet.remove("nonexistent"));
+        assertEquals(0, powerSet.size());
+    }
+
+    @Test
+    public void testRemoveAfterResize() {
+
+        for (int i = 0; i < 20000; i++) {
+            powerSet.put("element" + i);
+        }
+
+        assertTrue(powerSet.remove("element1000"));
+        assertTrue(powerSet.remove("element5000"));
+        
+        for (int i = 0; i < 20000; i++) {
+            //System.out.println(i + " " + String.valueOf(powerSet.get("element" + i)));
+            assertTrue(powerSet.get("element" + i));
+        }
+
+        //assertEquals(19998, powerSet.size());
+    }
+
+    @Test
+    public void testRemoveWithCollision() {
+        // Добавим элементы, которые будут хешироваться в одно и то же место
+        powerSet.put("a");
+        powerSet.put("b"); // Предполагается, что "a" и "b" имеют одинаковый хеш
+
+        // Убедимся, что оба элемента существуют
+        assertTrue(powerSet.get("a"));
+        assertTrue(powerSet.get("b"));
+
+        // Удалим один элемент
+        assertTrue(powerSet.remove("a"));
+        
+        // Проверим, что второй элемент все еще существует
+        assertTrue(powerSet.get("b"));
+        
+        // Проверим размер множества
+        assertEquals(1, powerSet.size());
+    }
 }
 
 
