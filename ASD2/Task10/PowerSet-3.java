@@ -8,6 +8,7 @@ public class PowerSetTest {
         private PowerSet set = new PowerSet();
         private PowerSet set1 = new PowerSet();
         private PowerSet set2 = new PowerSet();
+        private PowerSet powerSet = new PowerSet();
     
     @BeforeEach
     void setUp() {
@@ -143,13 +144,21 @@ public class PowerSetTest {
 
     @Test
     public void testPut10000() {
-        for(int i = 0; i < 100; i++) {
+        for(int i = 0; i < 10000; i++) {
             String str = "Value " + i;
             set.put(str);
         }
+
+        for(int i = 0; i < 10000; i++) {
+            String str = "Value " + i;
+            
+            System.out.println(set.get(str));    
+        }
+        
+        System.out.println(set.size());
     }
 
-        //
+    //
     // Неверное удаление элемента из непустого множества
     //
 
@@ -195,29 +204,38 @@ public class PowerSetTest {
     }
 
     @Test
-    public void testRemoveAfterResize() {
+    public void testRemoveAfterResize2() {
 
-        for (int i = 0; i < 20000; i++) {
-            powerSet.put("element" + i);
+        for (int i = 0; i < 10000; i++) {
+            powerSet.put("" + i);
         }
 
-        assertTrue(powerSet.remove("element1000"));
-        assertTrue(powerSet.remove("element5000"));
+        /*for (int i = 9999; i > 0; i--) {
+            //System.out.println(i + " " + String.valueOf(powerSet.get("" + i)));
+            assertTrue(powerSet.remove("" + i));
+        }*/
+
+        for (int i = 0; i < 10000; i++) {
+            System.out.println(i + " " + String.valueOf(powerSet.get("" + i)));
+            assertTrue(powerSet.remove("" + i));
+        }
+    }
+
+    @Test
+    public void testRemoveWithCollision() {
+        powerSet.put("a");
+        powerSet.put("b"); 
+
+        assertTrue(powerSet.get("a"));
+        assertTrue(powerSet.get("b"));
+
+        assertTrue(powerSet.remove("a"));
         
-        for (int i = 0; i < 20000; i++) {
-            //System.out.println(i + " " + String.valueOf(powerSet.get("element" + i)));
-            assertTrue(powerSet.get("element" + i));
-        }
-
-        //assertEquals(19998, powerSet.size());
+        assertTrue(powerSet.get("b"));
+        
+        assertEquals(1, powerSet.size());
     }
 }
-
-
-
-
-
-
 
 
 
