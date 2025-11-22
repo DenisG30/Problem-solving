@@ -7,7 +7,6 @@ public class BloomFilter
       {
         filter_len = f_len;
         bitArray = 0;
-        // создаём битовый массив длиной f_len ...
       }
       private void setBit(int i) {
         bitArray |= (1 << i);
@@ -17,7 +16,6 @@ public class BloomFilter
         return (bitArray & (1 << i)) != 0;
       }
 
-      // хэш-функции
       public int hash1(String str1)
       {
         if (str1 == null) {
