@@ -10,11 +10,30 @@ public class BloomFilterTest {
 
     @BeforeEach
     public void setup(){
-         
+        bloomFilter = new BloomFilter(32);   
     }
         
     @Test
-    public void testString() {
+    public void testStringT() {
+        String[] testStrings = {
+            "0123456789", "1234567890", "2345678901",
+            "3456789012", "4567890123", "5678901234",
+            "6789012345", "7890123456", "8901234567",
+            "9012345678"
+        };
+
+        for (String str : testStrings) {
+            bloomFilter.add(str);
+        }
+
+        for (String str : testStrings) {
+            assertTrue(bloomFilter.isValue(str));
+        }
+
+    }
+
+    @Test
+    public void testStringF() {
         String[] testStrings = {
             "0123456789", "1234567890", "2345678901",
             "3456789012", "4567890123", "5678901234",
@@ -33,13 +52,11 @@ public class BloomFilterTest {
             bloomFilter.add(str);
         }
 
-        for (String str : testStrings) {
-            assertTrue(bloomFilter.isValue(str));
-        }
-
         for (String str : testStrings2) {
             assertFalse(bloomFilter.isValue(str));
         }
     }
 }
-    
+
+
+
