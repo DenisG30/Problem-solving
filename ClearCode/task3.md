@@ -10,17 +10,20 @@ enabled - isFeatureEnabled
 
 completed - isProcessCompleted
 
+
 7.2
 
 hasErrors
 isCompleted 
 isOnline 
 
+
 7.3
 
 int numRows = 5;
 for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
    }
+
 
 7.4
 
@@ -33,6 +36,7 @@ String[] items = {"apple", "banana", "cherry"};
        }
    }
    
+
 7.5
 
 {
