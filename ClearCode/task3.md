@@ -9,21 +9,21 @@ value - isElementValue
 enabled - isFeatureEnabled
 
 completed - isProcessCompleted
-
+//
 
 7.2
 
 hasErrors
 isCompleted 
 isOnline 
-
+//
 
 7.3
 
 int numRows = 5;
 for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
    }
-
+//
 
 7.4
 
@@ -35,7 +35,7 @@ String[] items = {"apple", "banana", "cherry"};
        for (int bottomLevel = maxLevels - 1; bottomLevel >= 0; bottomLevel--) {
        }
    }
-   
+//
 
 7.5
 
@@ -54,3 +54,8 @@ for (String item : items) {
     count += item.length();
 }
 }
+//
+
+
+
+
