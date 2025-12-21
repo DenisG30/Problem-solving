@@ -10,7 +10,9 @@ enabled - isFeatureEnabled
 
 completed - isProcessCompleted
 
+
 7.2
+
 hasErrors
 isCompleted 
 isOnline 
