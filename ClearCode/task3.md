@@ -28,7 +28,7 @@ for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {}
 
 
 7.4
-
+```
 String[] items = {"apple", "banana", "cherry"};
 
 for (int startIndex = 0, endIndex = items.length - 1; startIndex <= endIndex; startIndex++, endIndex--) {}
@@ -38,7 +38,7 @@ for (int topLevel = 0; topLevel < maxLevels; topLevel++) {
    for (int bottomLevel = maxLevels - 1; bottomLevel >= 0; bottomLevel--) {}
    
 }
-
+```
 
 7.5
 
