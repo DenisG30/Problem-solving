@@ -43,15 +43,24 @@ for (int topLevel = 0; topLevel < maxLevels; topLevel++) {
 7.5
 
 List<String> items = Arrays.asList("apple", "banana", "cherry");
-int count = 0;
-for (String item : items) {
-    int temp = item.length(); 
-    count += temp;
-}
 
 int count = 0;
+
 for (String item : items) {
+    
+    int temp = item.length(); 
+    
+    count += temp;
+
+}
+
+
+int count = 0;
+
+for (String item : items) {
+    
     count += item.length();
+
 }
 
 
