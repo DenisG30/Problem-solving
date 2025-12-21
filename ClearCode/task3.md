@@ -1,4 +1,5 @@
 7.1
+
 status - isOrderCompleted
 
 end - isTaskFinished
@@ -10,17 +11,20 @@ enabled - isFeatureEnabled
 completed - isProcessCompleted
 
 7.2
+
 hasErrors
 isCompleted 
 isOnline 
 
 7.3
-   int numRows = 5;
-   for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
+
+int numRows = 5;
+for (int rowIndex = 0; rowIndex < numRows; rowIndex++) {
    }
 
 7.4
-   String[] items = {"apple", "banana", "cherry"};
+
+String[] items = {"apple", "banana", "cherry"};
    for (int startIndex = 0, endIndex = items.length - 1; startIndex <= endIndex; startIndex++, endIndex--) {
    }
 
@@ -29,7 +33,8 @@ isOnline
        }
    }
    
- 7.5
+7.5
+
 {
 List<String> items = Arrays.asList("apple", "banana", "cherry");
 int count = 0;
