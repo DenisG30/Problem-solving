@@ -1,8 +1,13 @@
 7.1
+
 status - isOrderCompleted
+
 end - isTaskFinished
+
 value - isElementValue
+
 enabled - isFeatureEnabled
+
 completed - isProcessCompleted
 
 7.2
